@@ -1,9 +1,25 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+   
     <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+    content="Treinamentos, capacitações e palestras na área da saúde.">
+
+    <meta name="keywords"
+    content="gestão em saúde, treinamento, capacitação, palestras, saúde">
+
+    <meta name="author"
+    content="M&M Gestão em Saúde">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}M&M Gestão em Saúde{% endblock %}</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -34,29 +50,105 @@
         .bg-verde{
             background:var(--verde);
         }
-    </style>
+        .carousel-item{
+            min-height: 550px;
+            padding-top: 30px;
+        }
+
+        .carousel img{
+            object-fit: cover;
+        }
+                .texto-dourado{
+            color:#b68a3c;
+        }
+        .carousel-item img{
+            max-height: 450px;
+            width: 100%;
+            object-fit: cover;
+        }
+        .whatsapp-float{
+            position:fixed;
+            width:65px;
+            height:65px;
+            bottom:25px;
+            right:25px;
+
+            background:#25D366;
+            color:white;
+
+            border-radius:50%;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            font-size:34px;
+
+            text-decoration:none;
+
+            box-shadow:0 4px 12px rgba(0,0,0,.25);
+
+            z-index:9999;
+        }
+
+        .whatsapp-float:hover{
+            transform:scale(1.1);
+            color:white;
+        }
+            </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg bg-white shadow-sm">
     <div class="container">
 
-        <a class="navbar-brand fw-bold texto-verde" href="/">
-            M&M Gestão em Saúde
+        <a class="navbar-brand" href="/">
+            <img
+                src="{% static 'img/logo.png' %}"
+                alt="M&M Gestão em Saúde"
+                height="70"
+            >
         </a>
 
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menu"
+        >
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="menu">
+
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Serviços</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Galeria</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Início</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'sobre' %}" >Sobre</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'servicos' %}" >Serviços</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Galeria</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contato</a>
+                </li>
+
             </ul>
+
+            <a href="#" class="btn btn-success ms-3">
+                WhatsApp
+            </a>
+
         </div>
 
     </div>
@@ -66,6 +158,95 @@
 {% endblock %}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<a
+    href="https://wa.me/5544999999999"
+    class="whatsapp-float"
+    target="_blank"
+>
+    <i class="bi bi-whatsapp"></i>
+</a>
+<footer class="bg-dark text-white py-5">
 
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-4 mb-4">
+
+                <img
+                    src="{% static 'img/logo.png' %}"
+                    alt="M&M Gestão em Saúde"
+                    height="80"
+                    class="mb-3"
+                >
+
+                <p>
+                    Capacitando profissionais e promovendo
+                    excelência na área da saúde através de
+                    treinamentos, palestras e capacitações.
+                </p>
+
+            </div>
+
+            <div class="col-lg-4 mb-4">
+
+                <h5 class="mb-3">Links Rápidos</h5>
+
+                <ul class="list-unstyled">
+
+                    <li class="mb-2">
+                        <a href="/" class="text-white text-decoration-none">
+                            Início
+                        </a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="{% url 'sobre' %}" class="text-white text-decoration-none">
+                            Sobre
+                        </a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="{% url 'servicos' %}" class="text-white text-decoration-none">
+                            Serviços
+                        </a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a href="#" class="text-white text-decoration-none">
+                            Contato
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <h5 class="mb-3">Contato</h5>
+
+                <p>📱 (44) 99999-9999</p>
+
+                <p>✉ contato@mmgestao.com.br</p>
+
+                <p>📍 Curitiba - PR</p>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="text-center">
+
+            © 2026 M&M Gestão em Saúde.
+            Todos os direitos reservados.
+
+        </div>
+
+    </div>
+
+</footer>
 </body>
 </html>
