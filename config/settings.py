@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'galeria',
     'clientes',
     'contato',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [

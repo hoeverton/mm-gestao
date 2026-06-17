@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Contato | M&M Gestão em Saúde
+{% endblock %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <div class="text-center mb-5">
+
+        <h6 class="texto-dourado fw-bold">
+            ENTRE EM CONTATO
+        </h6>
+
+        <h1 class="texto-verde fw-bold">
+            Fale Conosco
+        </h1>
+
+        <p class="lead">
+            Estamos prontos para ajudar sua instituição com treinamentos, palestras e capacitações.
+        </p>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body p-4">
+
+                    <h4 class="mb-4">
+                        Envie uma mensagem
+                    </h4>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <form method="post">
+                        {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label class="form-label">Nome</label>
+                        <input
+                            type="text"
+                            name="nome"
+                            class="form-control"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">E-mail</label>
+                        <input
+                            type="email"
+                            name="email"
+                            class="form-control"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Telefone</label>
+                        <input
+                            type="text"
+                            name="telefone"
+                            class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Mensagem</label>
+                        <textarea
+                            name="mensagem"
+                            class="form-control"
+                            rows="5"
+                            required></textarea>
+                    </div>
+
+                    <div style="display:none;">
+                        <input type="text" name="website">
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="souHumano"
+                            required>
+
+                        <label
+                            class="form-check-label"
+                            for="souHumano">
+                            Confirmo que sou humano
+                        </label>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-verde">
+                        Enviar Mensagem
+                    </button>
+                </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm border-0 h-100">
+
+                <div class="card-body p-4">
+
+                    <h4 class="mb-4">
+                        Informações de Contato
+                    </h4>
+
+                    <p>
+                        📱 WhatsApp: (44) 99999-9999
+                    </p>
+
+                    <p>
+                        ✉ contato@mmgestao.com.br
+                    </p>
+
+                    <p>
+                        📍 Curitiba - Paraná
+                    </p>
+
+                    <hr>
+
+                    <h5>
+                        Horário de Atendimento
+                    </h5>
+
+                    <p>
+                        Segunda a Sexta<br>
+                        08:00 às 18:00
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

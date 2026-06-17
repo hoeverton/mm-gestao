@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Galeria | M&M Gestão em Saúde
+{% endblock %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <div class="text-center mb-5">
+
+        <h6 class="texto-dourado fw-bold">
+            NOSSOS EVENTOS
+        </h6>
+
+        <h1 class="texto-verde fw-bold">
+            Galeria de Treinamentos e Capacitações
+        </h1>
+
+        <p class="lead">
+            Conheça alguns momentos dos treinamentos, palestras e capacitações realizadas.
+        </p>
+
+    </div>
+
+    <div class="row">
+
+    {% for foto in fotos %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card border-0 shadow-sm">
+
+                <img
+                    src="{{ foto.imagem.url }}"
+                    class="galeria-img card-img-top"
+                    alt="{{ foto.titulo }}"
+                >
+
+                <div class="card-body">
+
+                    <h5>
+                        {{ foto.titulo }}
+                    </h5>
+
+                    {% if foto.descricao %}
+                        <p>
+                            {{ foto.descricao }}
+                        </p>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    {% empty %}
+
+        <div class="col-12 text-center">
+
+            <h4>
+                Nenhuma foto cadastrada.
+            </h4>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+</section>
+
+{% endblock %}

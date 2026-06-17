@@ -108,22 +108,25 @@
                     <div class="col-lg-6">
 
                         <h1 class="display-3 fw-bold texto-dourado">
-                            Educação continuada e desenvolvimento profissional
+                           Cuidado Integral
+                                Uma visão completa da saúde
                         </h1>
 
                         <p class="lead">
-                            Conhecimento atualizado para profissionais que buscam excelência.
-                        </p>
+                            
+
+                                Atendimento humano,
+                                prevenção e bem-estar.
 
                     </div>
 
-                    <div class="col-lg-6">
+                   <div class="col-lg-6 text-center">
                         <img
-                            src="https://images.unsplash.com/photo-1516549655169-df83a0774514"
-                            class="img-fluid rounded shadow"
+                            src="{% static 'img/visao1.png' %}"
+                            class="img-fluid slide-visao"
+                            alt="Cuidado Integral"
                         >
-                    </div>
-
+                   </div>
                 </div>
 
             </div>
@@ -266,8 +269,19 @@
                     clínicas, hospitais e instituições que buscam
                     excelência em seus processos e equipes.
                 </p>
+                <div class="alert alert-light border-start border-4 border-warning mt-4">
 
-                <a href="#" class="btn btn-verde mt-3">
+                    <strong>Responsável Técnico:</strong><br>
+                    Maicon Santos da Luz<br>
+                    Enfermeiro • COREN PR 477.052<br>
+                   
+                    Michelle Dias do Nascimento de Paulo<br>
+                    Enfermeiro • COREN PR 639.792
+
+                </div>
+                
+
+                <a href="{% url 'sobre' %}" class="btn btn-verde mt-3">
                     Conheça Mais
                 </a>
 
@@ -403,6 +417,80 @@
         <a href="#" class="btn btn-outline-light btn-lg">
             Falar no WhatsApp
         </a>
+
+    </div>
+
+</section>
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h6 class="texto-dourado fw-bold">
+                GALERIA
+            </h6>
+
+            <h2 class="texto-verde fw-bold">
+                Momentos de Nossos Treinamentos
+            </h2>
+
+            <p class="lead">
+                Confira alguns registros de capacitações e eventos realizados.
+            </p>
+
+        </div>
+
+        <div class="row">
+
+            {% for foto in fotos %}
+
+                <div class="col-md-4 mb-4">
+
+                    <div class="card border-0 shadow-sm">
+
+                        <img
+                            src="{{ foto.imagem.url }}"
+                            alt="{{ foto.titulo }}"
+                            class="galeria-img card-img-top"
+                        >
+
+                        <div class="card-body">
+
+                            <h5>
+                                {{ foto.titulo }}
+                            </h5>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% empty %}
+
+                <div class="col-12 text-center">
+
+                    <p>
+                        Nenhuma foto cadastrada.
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="text-center mt-4">
+
+            <a
+                href="{% url 'galeria' %}"
+                class="btn btn-verde"
+            >
+                Ver Galeria Completa
+            </a>
+
+        </div>
 
     </div>
 

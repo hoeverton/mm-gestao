@@ -3,25 +3,54 @@
 <html lang="pt-br">
 <head>
    
-    <meta charset="UTF-8">
+     <meta charset="UTF-8">
 
     <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
+          content="width=device-width, initial-scale=1.0">
+
+    <title>M&M Gestão em Saúde | Treinamentos e Capacitações em Saúde</title>
 
     <meta name="description"
-    content="Treinamentos, capacitações e palestras na área da saúde.">
+          content="Treinamentos, capacitações, consultorias e palestras para profissionais e instituições da área da saúde.">
 
     <meta name="keywords"
-    content="gestão em saúde, treinamento, capacitação, palestras, saúde">
+          content="gestão em saúde, treinamento, capacitação, palestras, consultoria em saúde">
 
     <meta name="author"
-    content="M&M Gestão em Saúde">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}M&M Gestão em Saúde{% endblock %}</title>
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+          content="M&M Gestão em Saúde">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="canonical"
+          href="https://www.seudominio.com.br/">
+
+    <meta property="og:title"
+          content="M&M Gestão em Saúde">
+
+    <meta property="og:description"
+          content="Treinamentos, capacitações e palestras na área da saúde.">
+
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:url"
+          content="https://www.seudominio.com.br">
+
+    <meta property="og:image"
+          content="https://www.seudominio.com.br/static/img/logo.png">
+
+    <meta name="twitter:card"
+          content="summary_large_image">
+
+    <!--link rel="icon" 
+          type="image/png" href="{% static 'img/cruzverde.png' %}" sizes="62x62">
+    <link rel="icon" href="{% static 'img/logo2.png' %}?v=2">    -->  
+    <link rel="icon"
+      href="{% static 'img/cruzverde.png' %}?v=99">
+          
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 
     <style>
         :root{
@@ -55,18 +84,22 @@
             padding-top: 30px;
         }
 
-        .carousel img{
-            object-fit: cover;
+        .carousel-img{
+            max-height:450px;
+            width:100%;
+            object-fit:cover;
         }
-                .texto-dourado{
-            color:#b68a3c;
-        }
-        .carousel-item img{
+       /* .carousel-item img{
             max-height: 450px;
             width: 100%;
             object-fit: cover;
+        }*/
+        .slide-visao{
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
         }
-        .whatsapp-float{
+                .whatsapp-float{
             position:fixed;
             width:65px;
             height:65px;
@@ -95,7 +128,30 @@
             transform:scale(1.1);
             color:white;
         }
-            </style>
+
+        .galeria-img{
+            height:300px;
+            width:100%;
+            object-fit:cover;
+            transition:.3s;
+        }
+
+        .galeria-img:hover{
+            transform:scale(1.03);
+        }
+
+        .social-icon{
+            color:white;
+            font-size:30px;
+            transition:.3s;
+        }
+
+        .social-icon:hover{
+            color:var(--dourado);
+        }
+       
+
+    </style>
 </head>
 <body>
 
@@ -104,7 +160,7 @@
 
         <a class="navbar-brand" href="/">
             <img
-                src="{% static 'img/logo.png' %}"
+                src="{% static 'img/M&M03 (1).png' %}"
                 alt="M&M Gestão em Saúde"
                 height="70"
             >
@@ -136,11 +192,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Galeria</a>
+                    <a class="nav-link" href="{% url 'galeria' %}">Galeria</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contato</a>
+                    <a class="nav-link" href="{% url 'contato' %}">Contato</a>
                 </li>
 
             </ul>
@@ -171,7 +227,8 @@
 
         <div class="row">
 
-            <div class="col-lg-4 mb-4">
+            <!-- Coluna 1 -->
+            <div class="col-lg-3 mb-4">
 
                 <img
                     src="{% static 'img/logo.png' %}"
@@ -181,60 +238,62 @@
                 >
 
                 <p>
-                    Capacitando profissionais e promovendo
-                    excelência na área da saúde através de
-                    treinamentos, palestras e capacitações.
+                    Capacitando profissionais e promovendo excelência na área da saúde através de treinamentos, palestras e capacitações.
                 </p>
 
             </div>
 
-            <div class="col-lg-4 mb-4">
+            <!-- Coluna 2 -->
+            <div class="col-lg-3 mb-4">
 
                 <h5 class="mb-3">Links Rápidos</h5>
 
                 <ul class="list-unstyled">
 
-                    <li class="mb-2">
-                        <a href="/" class="text-white text-decoration-none">
-                            Início
-                        </a>
-                    </li>
-
-                    <li class="mb-2">
-                        <a href="{% url 'sobre' %}" class="text-white text-decoration-none">
-                            Sobre
-                        </a>
-                    </li>
-
-                    <li class="mb-2">
-                        <a href="{% url 'servicos' %}" class="text-white text-decoration-none">
-                            Serviços
-                        </a>
-                    </li>
-
-                    <li class="mb-2">
-                        <a href="#" class="text-white text-decoration-none">
-                            Contato
-                        </a>
-                    </li>
+                    <li><a href="/" class="text-white text-decoration-none">Início</a></li>
+                    <li><a href="{% url 'sobre' %}" class="text-white text-decoration-none">Sobre</a></li>
+                    <li><a href="{% url 'servicos' %}" class="text-white text-decoration-none">Serviços</a></li>
+                    <li><a href="{% url 'contato' %}" class="text-white text-decoration-none">Contato</a></li>
 
                 </ul>
 
             </div>
 
-            <div class="col-lg-4">
+            <!-- Coluna 3 -->
+            <div class="col-lg-3 mb-4">
 
                 <h5 class="mb-3">Contato</h5>
 
                 <p>📱 (44) 99999-9999</p>
-
                 <p>✉ contato@mmgestao.com.br</p>
-
                 <p>📍 Curitiba - PR</p>
 
             </div>
 
-        </div>
+            <!-- Coluna 4 -->
+            <div class="col-lg-3 mb-4">
+
+                <h5 class="mb-3">Redes Sociais</h5>
+
+                <div class="d-flex gap-3">
+
+                    <a href="https://instagram.com/seuinstagram"
+                    target="_blank"
+                    class="social-icon">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="https://wa.me/5544999999999"
+                    target="_blank"
+                    class="social-icon">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+
+         </div>
+
+    </div>
+
+</div>
 
         <hr>
 
