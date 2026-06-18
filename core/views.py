@@ -2,6 +2,7 @@ from django.shortcuts import render
 from galeria.models import Foto
 from django.http import HttpResponse
 from django.contrib import messages
+from contato.models import Contato
 
 
 def home(request):
@@ -32,16 +33,12 @@ def contato(request):
             messages.error(request, 'Bot detectado.')
             return render(request, 'contato.html')
 
-        nome = request.POST.get('nome')
-        email = request.POST.get('email')
-        telefone = request.POST.get('telefone')
-        mensagem = request.POST.get('mensagem')
-
-        print("NOVO CONTATO")
-        print(nome)
-        print(email)
-        print(telefone)
-        print(mensagem)
+        Contato.objects.create(
+        nome=request.POST.get('nome'),
+        email=request.POST.get('email'),
+        telefone=request.POST.get('telefone'),
+        mensagem=request.POST.get('mensagem')
+    )
 
         messages.success(
             request,
