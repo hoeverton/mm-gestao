@@ -5,26 +5,37 @@ from django.conf.urls.static import static
 
 from django.contrib.sitemaps.views import sitemap
 from core.sitemaps import StaticViewSitemap
+from core.views import robots_txt
 
 
 sitemaps = {
-    'static': StaticViewSitemap,
+    "static": StaticViewSitemap,
 }
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('core.urls')),
+    path("admin/", admin.site.urls),
+
+    path("", include("core.urls")),
 
     path(
-        'sitemap.xml',
+        "sitemap.xml",
         sitemap,
-        {'sitemaps': sitemaps},
-        name='django.contrib.sitemaps.views.sitemap'
+        {"sitemaps": sitemaps},
+        name="django.contrib.sitemaps.views.sitemap",
+    ),
+
+    path(
+        "robots.txt",
+        robots_txt,
+        name="robots_txt",
     ),
 ]
 
-urlpatterns += static(
-    settings.MEDIA_URL,
-    document_root=settings.MEDIA_ROOT
-)
+
+# Servir arquivos de mídia apenas em desenvolvimento
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT,
+    )

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Mensagem Enviada | M&M Gestão em Saúde
+{% endblock %}
+
+{% block content %}
+
+<section class="container py-5">
+
+```
+<div class="text-center">
+
+    <div class="mb-4" style="font-size:80px;">
+        ✅
+    </div>
+
+    <h1 class="texto-verde fw-bold">
+        Mensagem enviada com sucesso!
+    </h1>
+
+    <p class="lead mt-4">
+        Recebemos sua solicitação.
+    </p>
+
+    <p>
+        Nossa equipe entrará em contato o mais breve possível.
+    </p>
+
+    <a href="{% url 'home' %}"
+       class="btn btn-verde mt-3">
+        Voltar para o início
+    </a>
+
+</div>
+```
+
+</section>
+
+{% endblock %}

@@ -4,3 +4,17 @@ __pycache__/
 *.pyc
 media/
 .env
+
+# Arquivos estáticos gerados em produção
+staticfiles/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Cache do Python
+*.pyo
+*.pyd
